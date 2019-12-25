@@ -361,14 +361,14 @@ download_wp(){
 
     mkdir /usr/share/wordpresstemp
     cd /usr/share/wordpresstemp/
-    wget https://cn.wordpress.org/latest-zh_CN.zip
-    if [ ! -f "/usr/share/wordpresstemp/latest-zh_CN.zip" ]; then
-    	red "从cn官网下载wordpress失败，尝试从github下载……"
-		wget https://github.com/atrandys/wordpress/raw/master/latest-zh_CN.zip    
+    wget https://wordpress.org/wordpress-4.9.13.zip
+    if [ ! -f "/usr/share/wordpresstemp/wordpress-4.9.13.zip" ]; then
+    	red "从官网下载wordpress失败，尝试从github下载……"
+		wget https://github.com/ideawounderful/wordpress/wordpress-4.9.13.zip   
     fi
-    if [ ! -f "/usr/share/wordpresstemp/latest-zh_CN.zip" ]; then
+    if [ ! -f "/usr/share/wordpresstemp/wordpress-4.9.13.zip" ]; then
 		red "我它喵的从github下载wordpress也失败了，请尝试用下面的方式手动安装……"
-		grenn "从wordpress官网下载包然后命名为latest-zh_CN.zip，新建目录/usr/share/wordpresstemp/，上传到此目录下，重新执行安装脚本即可"
+		grenn "从wordpress官网下载包然后命名为latest.zip，新建目录/usr/share/wordpresstemp/，上传到此目录下，重新执行安装脚本即可"
 		exit 1
     fi
 }
@@ -382,8 +382,8 @@ install_wp(){
     echo
     sleep 1
     cd /usr/share/nginx/html
-    mv /usr/share/wordpresstemp/latest-zh_CN.zip ./
-    unzip latest-zh_CN.zip
+    mv /usr/share/wordpresstemp/wordpress-4.9.13.zip ./
+    unzip wordpress-4.9.13.zip
     mv wordpress/* ./
     cp wp-config-sample.php wp-config.php
     green "===================="
